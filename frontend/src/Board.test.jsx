@@ -39,6 +39,22 @@ describe('Board', () => {
     expect(screen.getByText('Сегодня')).toBeInTheDocument()
   })
 
+  it('highlights column on drag over and clears highlight on drag leave', async () => {
+    apiFetch.mockResolvedValue([])
+    render(<Board token="t" project={{ id: 1, name: 'P' }} />)
+
+    await waitFor(() => expect(apiFetch).toHaveBeenCalled())
+
+    const col = screen.getByTestId('col-in_progress')
+
+    const dt = makeDt()
+    fireEvent.dragOver(col, { dataTransfer: dt })
+    expect(col.getAttribute('style')).toContain('rgba(59, 130, 246, 0.08)')
+
+    fireEvent.dragLeave(col, { relatedTarget: document.body })
+    expect(col.getAttribute('style')).toContain('background: rgb(15, 20, 26)')
+  })
+
   it('moves task between columns via drag&drop and calls API', async () => {
     const task = { id: 10, title: 'Задача', status: 'queue' }
 

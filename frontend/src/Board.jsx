@@ -155,6 +155,13 @@ export function Board({ token, project, onBack, onUnauthorized }) {
     if (dragOverStatus !== status) setDragOverStatus(status)
   }
 
+  const onDragLeave = status => ev => {
+    // dragleave может срабатывать при переходе на дочерние элементы — не убираем подсветку в этом случае
+    const next = ev.relatedTarget
+    if (next && ev.currentTarget && ev.currentTarget.contains(next)) return
+    if (dragOverStatus === status) setDragOverStatus('')
+  }
+
   const onDragEnd = () => {
     setDraggingId(null)
     setDragOverStatus('')
@@ -181,6 +188,7 @@ export function Board({ token, project, onBack, onUnauthorized }) {
               key={col.id}
               data-testid={`col-${col.id}`}
               onDragOver={onDragOver(col.id)}
+              onDragLeave={onDragLeave(col.id)}
               onDrop={onDrop(col.id)}
               style={{
                 minHeight: 320,
