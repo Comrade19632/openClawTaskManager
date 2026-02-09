@@ -1,9 +1,10 @@
+// UI — на русском. Поле `id` используется как машинный статус.
 export const STATUSES = [
-  { id: 'queue', title: 'Queue', ru: 'Очередь' },
-  { id: 'in_progress', title: 'In Progress', ru: 'В работе' },
-  { id: 'waiting', title: 'Waiting', ru: 'Ожидание' },
-  { id: 'done', title: 'Done', ru: 'Готово' },
-  { id: 'today', title: 'Today', ru: 'Сегодня' },
+  { id: 'queue', title: 'Очередь' },
+  { id: 'in_progress', title: 'В работе' },
+  { id: 'waiting', title: 'Ожидание' },
+  { id: 'done', title: 'Готово' },
+  { id: 'today', title: 'Сегодня' },
 ]
 
 export function isClosedStatus(status) {

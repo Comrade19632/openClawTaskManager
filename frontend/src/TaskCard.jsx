@@ -18,7 +18,9 @@ export function TaskCard({ task, onClick, draggable, onDragStart, dragDisabled, 
       draggable={draggable && !dragDisabled}
       onDragStart={dragDisabled ? undefined : onDragStart}
       style={{
+        position: 'relative',
         padding: 12,
+        paddingBottom: showClosed ? 28 : 12,
         cursor: 'pointer',
         background: isDragging ? 'rgba(59,130,246,0.10)' : 'rgba(255,255,255,0.02)',
         border: '1px solid rgba(255,255,255,0.08)',
@@ -55,11 +57,12 @@ export function TaskCard({ task, onClick, draggable, onDragStart, dragDisabled, 
         <div
           data-testid="closed-at"
           style={{
-            marginTop: 10,
-            display: 'flex',
-            justifyContent: 'flex-end',
+            position: 'absolute',
+            right: 10,
+            bottom: 8,
             fontSize: 11,
             opacity: 0.7,
+            whiteSpace: 'nowrap',
           }}
         >
           {formatDateTimeShort(closedAt)}
