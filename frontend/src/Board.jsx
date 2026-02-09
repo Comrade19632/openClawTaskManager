@@ -179,6 +179,7 @@ export function Board({ token, project, onBack, onUnauthorized }) {
           return (
             <Card
               key={col.id}
+              data-testid={`col-${col.id}`}
               onDragOver={onDragOver(col.id)}
               onDrop={onDrop(col.id)}
               style={{
