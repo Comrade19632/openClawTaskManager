@@ -29,8 +29,10 @@ services:
   frontend:
     build:
       context: ./frontend
+    env_file: .env
     environment:
       - VITE_API_BASE=${VITE_API_BASE:-/taskManager/api}
+      - VITE_TG_BOT_USERNAME=${VITE_TG_BOT_USERNAME:-click_ai_tg_bot}
     volumes:
       - ./frontend:/app
     ports:
