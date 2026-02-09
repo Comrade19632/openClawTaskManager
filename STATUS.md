@@ -1,5 +1,7 @@
 # STATUS (TaskManager)
 
+_Авто-обновление цикла: 2026-02-09 18:24 MSK_
+
 ## Текущее состояние
 - UI: `/taskManager/` (логин через Telegram Login Widget)
 - API: `/taskManager/api/health/` (ok)
